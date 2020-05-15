@@ -1,0 +1,104 @@
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba($color-black, .8);
+    z-index: 300;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+
+    &__content {
+        @include absoluteCenter;
+        background-color: $color-white;
+        width: 75%;
+        box-shadow: 0 2rem 4rem rgba($color-black, .2);
+        border-radius: 3px;
+        overflow: hidden;
+        display: table;
+        transform: translate(-50%, -50%) scale(.25);
+        transition: all 0.5s;
+
+        @inc
+    }
+
+    &__left {
+        width: 33.333%;
+        display: table-cell;
+
+        @include respond(tablet-portrait) {
+            width: 100%;
+            display: block;
+        }
+    }
+
+    &__right {
+        width: 66.667%;
+        display: table-cell;
+        vertical-align: middle;
+        padding: 3rem 5rem;
+
+        @include respond(tablet-portrait) {
+            width: 100%;
+            display: block;
+        }
+    }
+
+    &__img {
+        display: block;
+        width: 100%;
+
+        @include respond(tablet-portrait) {
+            width: 49%;
+            display: inline-block;
+        }
+    }
+
+    &__text {
+        font-size: 1.4rem;
+        column-count: 2;
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-gap: 4rem;
+        column-rule: 2px solid $color-grey-light-2;
+        hyphens: auto;
+        -moz-hyphens: auto;
+        -webkit-hyphens: auto;
+
+        @include respond(phone) {
+            column-count: 1;
+            font-size: 1.2rem;
+        }
+    }
+
+    &:target {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &:target &__content {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    &__cancel {
+
+        &:visited,
+        &:link {
+            position: absolute;
+            top: 2.5rem;
+            right: 2.5rem;
+            text-decoration: none;
+            font-size: 5rem;
+            line-height: 1;
+            color: $color-grey-dark-2;
+            transition: all 0.2s;
+        }
+
+        &:hover {
+            color: $color-primary;
+        }
+
+    }
+}
